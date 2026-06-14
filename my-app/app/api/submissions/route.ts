@@ -26,8 +26,7 @@ export async function POST(request: Request) {
       submissionNumber: submissionNumber,
       rating: calculateRating(
         String(data.prompt).slice(0, 1500),
-        data.testCase
-      ),
+        ),
     };
 
     const docRef = await addDoc(submissionsRef, submissionData);
@@ -52,7 +51,7 @@ export async function POST(request: Request) {
   }
 }
 
-function calculateRating(prompt: string, testCase: any): number {
+function calculateRating(prompt: string): number {
   let rating = 70; // Base rating
 
   // Factor 1: Length optimization (shorter prompts are generally better)
